@@ -1,5 +1,7 @@
 # CircleGod
 
+正在开发中 | Under active development
+
 CircleGod 是一个现代化的数据可视化与分析平台，旨在帮助用户轻松创建、管理和分享数据仪表盘，实现数据驱动的决策。
 
 ##  核心功能
