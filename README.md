@@ -37,6 +37,10 @@ CircleGod 是一个现代化的数据可视化与分析平台，旨在帮助用�
 - 自动发送
 - 任务管理
 
+  CircleGod界面示例
+![Image](https://github.com/user-attachments/assets/fb3b7ad4-495e-4d65-88ae-c07ee40ec03c)
+
+
 ##  快速开始
 
 ### 环境要求
@@ -44,8 +48,6 @@ CircleGod 是一个现代化的数据可视化与分析平台，旨在帮助用�
 - PostgreSQL 14+
 - npm 或 yarn
 
-CircleGod界面示例
-![Image](https://github.com/user-attachments/assets/fb3b7ad4-495e-4d65-88ae-c07ee40ec03c)
 
 ### 安装步骤
 
