@@ -1,25 +1,53 @@
 # CircleGod
 
-正在开发中 | Under active development
+CircleGod 是一个现代化的数据可视化与分析平台，集成了先进的 MetaGPT 智能体系统，旨在帮助用户轻松创建、管理和分享数据仪表盘，实现 AI 驱动的数据决策。
 
-CircleGod 是一个现代化的数据可视化与分析平台，旨在帮助用户轻松创建、管理和分享数据仪表盘，实现数据驱动的决策。
-当前的核心开发方向是整合高效的 AI Agent 框架，以实现智能化、自动化的数据处理。
+##  MetaGPT 智能体系统
+
+CircleGod 的核心优势在于集成了强大的 MetaGPT 智能体系统，提供了一套完整的 AI 驱动能力：
+
+###  AI 智能体架构
+
+- **灵活的智能体工厂**
+  - 基于 AgentFactory 的智能体创建与管理
+  - 支持多种专业化智能体类型
+  - 智能体间无缝协作
+
+- **专业化智能体**
+  - **ChatAgent**: 提供自然语言交互界面，理解用户需求
+  - **DataAnalystAgent**: 执行数据分析，发现趋势、检测异常、生成业务洞察
+  - **VisualizerAgent**: 自动生成最佳可视化方案，优化数据展示
+  - **DataConnectorAgent**: 处理数据源连接与转换
+  - **PredictorAgent**: 执行预测分析，拟合模型与时间序列预测
+
+- **独特优势**
+  - 基于大语言模型的上下文理解
+  - 可扩展的智能体能力与动作系统
+  - 记忆系统支持对话历史与长期知识
 
 ##  核心功能
 
 ###  数据连接器
 - 支持 MySQL、PostgreSQL、MongoDB、REST API、GraphQL、CSV、Excel
-- 可视化配置界面
-- 自动连接测试
-- 数据同步调度
+- 可视化配置界面，AI 辅助连接配置
+- 自动连接测试与数据同步调度
+- AI 驱动的数据清洗与转换
 
-###  高级分析模型
-- 机器学习：回归、分类、聚类、时间序列
-- AI能力：NLP、计算机视觉、智能洞察
-- 模型训练与评估
-- 预测结果可视化
+###  AI 驱动分析
+- **自动化数据探索**
+  - 智能识别关键模式与趋势
+  - 异常检测与根因分析
+  - 相关性发现与特征重要性评估
+- **高级分析模型**
+  - 机器学习：回归、分类、聚类、时间序列
+  - 自然语言处理与计算机视觉集成
+  - 模型训练、评估与解释
 
-###  可视化仪表盘
+###  智能可视化仪表盘
+- **AI 辅助设计**
+  - 基于数据智能推荐最佳可视化
+  - 自动布局优化
+  - 数据故事化呈现
 - **交互式设计**
   - 拖拽式布局
   - 响应式设计
@@ -32,15 +60,11 @@ CircleGod 是一个现代化的数据可视化与分析平台，旨在帮助用�
   - 文本组件
   - 过滤器组件
 
-### 📑 报表系统
+###  智能报表系统
 - 多格式导出：PDF、Excel、CSV
-- 定时导出
-- 自动发送
+- AI 辅助报表生成与解释
+- 定时导出与自动发送
 - 任务管理
-
-  CircleGod界面示例
-![Image](https://github.com/user-attachments/assets/fb3b7ad4-495e-4d65-88ae-c07ee40ec03c)
-
 
 ##  快速开始
 
@@ -48,7 +72,6 @@ CircleGod 是一个现代化的数据可视化与分析平台，旨在帮助用�
 - Node.js 18+
 - PostgreSQL 14+
 - npm 或 yarn
-
 
 ### 安装步骤
 
@@ -60,6 +83,10 @@ CircleGod 是一个现代化的数据可视化与分析平台，旨在帮助用�
 
 2. **安装依赖**
    ```bash
+   # 全部依赖
+   npm install
+   
+   # 或者分步安装
    # 核心依赖
    npm install next@latest react@latest react-dom@latest
    
@@ -71,6 +98,9 @@ CircleGod 是一个现代化的数据可视化与分析平台，旨在帮助用�
    
    # 数据可视化
    npm install chart.js d3.js react-grid-layout
+   
+   # AI 和 LLM 集成
+   npm install openai langchain
    
    # 报表导出
    npm install jspdf jspdf-autotable xlsx csv-stringify
@@ -86,6 +116,7 @@ CircleGod 是一个现代化的数据可视化与分析平台，旨在帮助用�
    编辑 `.env` 文件，配置：
    - 数据库连接信息
    - NextAuth 配置
+   - OpenAI API 密钥
    - 其他必要的 API 密钥
 
 4. **初始化数据库**
@@ -116,12 +147,19 @@ CircleGod 是一个现代化的数据可视化与分析平台，旨在帮助用�
 - **认证**: NextAuth.js
 - **API**: Next.js API Routes
 
+### AI 技术栈
+- **大语言模型**: OpenAI API 集成
+- **智能体框架**: 自研 MetaGPT 架构
+- **可视化推荐**: 基于数据特征的智能推荐系统
+- **预测分析**: 时间序列与机器学习模型
+
 ##  文档
 
 - [架构设计](./docs/architecture.md)
 - [API 文档](./docs/api.md)
 - [开发规范](./docs/development.md)
 - [部署指南](./docs/deployment.md)
+- [MetaGPT 集成指南](./docs/metagpt.md)
 
 ##  参与贡献
 
@@ -136,3 +174,7 @@ CircleGod 是一个现代化的数据可视化与分析平台，旨在帮助用�
 ##  许可证
 
 本项目采用 MIT 许可证 - 查看 [LICENSE](./LICENSE) 文件了解详情。
+
+##  更新日志
+
+查看 [CHANGELOG.md](./CHANGELOG.md) 了解项目的版本更新历史。 
