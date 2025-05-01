@@ -1,45 +1,35 @@
 import { NextResponse } from "next/server";
-import { getServerSession } from "next-auth";
-import { PrismaClient } from "@prisma/client";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { prisma } from '@/lib/api/prisma';
 
-const prisma = new PrismaClient();
-
-export async function GET(request: Request) {
+// 获取所有数据连接器
+export async function GET() {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.id) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
-
     const connectors = await prisma.dataConnector.findMany({
-      where: {
-        userId: session.user.id,
+      orderBy: {
+        createdAt: 'desc',
       },
     });
 
     return NextResponse.json(connectors);
   } catch (error) {
-    console.error("Error fetching connectors:", error);
+    console.error('Error fetching connectors:', error);
     return NextResponse.json(
-      { message: "Internal server error" },
+      { error: 'Failed to fetch connectors' },
       { status: 500 }
     );
   }
 }
 
+// 创建新的数据连接器
 export async function POST(request: Request) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.id) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
+    const body = await request.json();
+    const { name, type, config, userId } = body;
 
-    const { name, type, config } = await request.json();
-
-    if (!name || !type || !config) {
+    // 基本验证
+    if (!name || !type || !config || !userId) {
       return NextResponse.json(
-        { message: "Name, type, and config are required" },
+        { error: 'Missing required fields' },
         { status: 400 }
       );
     }
@@ -49,15 +39,15 @@ export async function POST(request: Request) {
         name,
         type,
         config,
-        userId: session.user.id,
+        userId,
       },
     });
 
     return NextResponse.json(connector, { status: 201 });
   } catch (error) {
-    console.error("Error creating connector:", error);
+    console.error('Error creating connector:', error);
     return NextResponse.json(
-      { message: "Internal server error" },
+      { error: 'Failed to create connector' },
       { status: 500 }
     );
   }

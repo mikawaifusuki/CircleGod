@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { LLMService, QueryResult } from '@/lib/llm/llmService';
+import { AIService } from '@/lib/services/aiService';
 import { VisualizationService } from '@/lib/viz/visualizationService';
 import { DataService } from '@/lib/data/dataService';
 import { ChatMessage } from '@/types/chat';
 
 // 初始化服务
-const llmService = new LLMService();
+const aiService = new AIService();
 const vizService = new VisualizationService();
 const dataService = new DataService();
 
@@ -40,18 +40,16 @@ export async function POST(request: NextRequest) {
       }
     }
     
-    // 发送查询到LLM服务
-    const result: QueryResult = await llmService.sendQuery(messages, dataContext);
-    
-    // 生成可视化配置
-    const visualization = result.visualizationData 
-      ? vizService.generateVisualization(result)
-      : null;
+    // 调用 AI 服务进行处理
+    const result = await aiService.processChat(messages, dataContext);
     
     // 返回响应
     return NextResponse.json({
       answer: result.answer,
-      visualization,
+      visualization: result.visualizationData ? {
+        data: result.visualizationData,
+        type: result.visualizationType
+      } : null,
       suggestedFollowUps: result.suggestedFollowUps || [],
       dataAnalysis: result.dataAnalysis || null,
     });
